@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title%}Home Page{% endblock %}
+
+{% block body%}
+<div class="first">
+    <h1 class="first">Stock Price prediction</h1>
+    <form action="/analyse" method="post">
+        <select id="text" name="text">
+            <option value="AAPL">APPLE</option>
+            <option value="AMZN">AMAZON</option>
+            <option value="GOOGL">GOOGLE</option>
+        </select>
+        <button type="submit">PREDICT</button>
+    </form>        
+</div>
+{% endblock %}

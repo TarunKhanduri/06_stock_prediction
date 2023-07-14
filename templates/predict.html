@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block title%}Predection{% endblock %}
+
+{% block body%}
+<div>
+    <h1>{{stock}} Stock prediction graph</h1>
+    <div class="sec">
+        <image src="{{url_for('static', filename='images/graph1.png')}}">
+    </div>
+    <div class="sec">
+        <image src="{{url_for('static', filename='images/graph2.png')}}">
+    </div>
+
+    <form action="/back" method="post">
+        <button type="submit">GO BACK</button>
+    </form>
+</div>
+{% endblock %}
