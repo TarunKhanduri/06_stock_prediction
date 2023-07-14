@@ -1,2 +1,0 @@
-D:/apps/anaconda/Scripts/activate
-conda activate base
