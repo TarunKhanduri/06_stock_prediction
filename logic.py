@@ -35,7 +35,7 @@ def create_dataset(dataset, time_step=1):
 		dataY.append(dataset[i + time_step, 0])
 	return np.array(dataX), np.array(dataY)
 
-def stacked_lstm(X_train,y_train,X_test,y_test):
+def stacked_lstm(X_train,y_train,X_test,y_test,m):
     # model=Sequential()
     # model.add(LSTM(50,return_sequences=True,input_shape=(100,1)))
     # model.add(LSTM(50,return_sequences=True))
@@ -43,7 +43,7 @@ def stacked_lstm(X_train,y_train,X_test,y_test):
     # model.add(Dense(1))
     # model.compile(loss='mean_squared_error',optimizer='adam')
     # model.fit(X_train,y_train,validation_data=(X_test,y_test),epochs=100,batch_size=64,verbose=1)
-    with open('model_pickle_GOOGL','rb') as f:
+    with open(m,'rb') as f:
         model=pickle.load(f)
     return model
 
@@ -100,9 +100,13 @@ def predict(model, test_data, df1, scaler):
             lst_output.extend(yhat.tolist())
             i=i+1
 
-    df3=df1.tolist()
-    df3.extend(lst_output)
-    df3=scaler.inverse_transform(df3).tolist()
-    plt.plot(df3)
+    df2=df1.tolist()
+    df2.extend(lst_output)
+   
+    df2=scaler.inverse_transform(df2).tolist()
+    plt.plot(df2[len(df2)-30:])
     plt.savefig('static/images/graph2.png')
+    plt.close()
+    plt.plot(df2[len(df2)-100:])
+    plt.savefig('static/images/graph3.png')
     plt.close()

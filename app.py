@@ -25,7 +25,7 @@ def analyse():
         X_train =X_train.reshape(X_train.shape[0],X_train.shape[1] , 1)
         X_test = X_test.reshape(X_test.shape[0],X_test.shape[1] , 1)
 
-        model=logic.stacked_lstm(X_train,y_train,X_test,y_test)
+        model=logic.stacked_lstm(X_train,y_train,X_test,y_test, "model_pickle_"+txt)
 
         train_predict,test_predict=logic.training(model,X_train,X_test,scaler)
 
